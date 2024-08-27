@@ -1,7 +1,8 @@
 const { DataTypes } = require('sequelize');
+const Port = require('./Port');
 const sequelize = require('./connection');
 
-const Client = sequelize.define('Client', {
+const Navire = sequelize.define('Navire', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -11,25 +12,25 @@ const Client = sequelize.define('Client', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    adresse: {
+    capacite: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    etat: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    numTel: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-            isEmail: true
+    portId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'Ports',
+            key: 'id'
         }
-    },
+    }
 }, {
     timestamps: false
 });
 
-module.exports = Client;
+Navire.belongsTo(Port, { foreignKey: 'portId' });
+
+module.exports = Navire;

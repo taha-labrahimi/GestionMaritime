@@ -1,11 +1,9 @@
 const { Sequelize } = require('sequelize');
 
-
 const sequelize = new Sequelize('gestionmaritime_db', 'admin', 'admin', {
     host: 'localhost',
     dialect: 'mysql'
 });
-
 
 sequelize.authenticate()
     .then(() => {

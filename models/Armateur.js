@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./connection');
 
-const Client = sequelize.define('Client', {
+const Armateur = sequelize.define('Armateur', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -27,9 +27,9 @@ const Client = sequelize.define('Client', {
         validate: {
             isEmail: true
         }
-    },
+    }
 }, {
     timestamps: false
 });
 
-module.exports = Client;
+module.exports = Armateur;

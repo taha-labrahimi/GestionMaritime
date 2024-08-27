@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./connection');
 
-const Client = sequelize.define('Client', {
+const Port = sequelize.define('Port', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -11,25 +11,24 @@ const Client = sequelize.define('Client', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    adresse: {
+    localisation: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    numTel: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
+    capacite: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
-    email: {
+    pays: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-            isEmail: true
-        }
+        allowNull: false
     },
+    heuresOuverture: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, {
     timestamps: false
 });
 
-module.exports = Client;
+module.exports = Port;
