@@ -1,24 +1,15 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./connection');
 
-const Client = sequelize.define('Client', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    nom: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    adresse: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    numTel: {
+const User = sequelize.define('User', {
+    username: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     email: {
         type: DataTypes.STRING,
@@ -32,4 +23,4 @@ const Client = sequelize.define('Client', {
     timestamps: false
 });
 
-module.exports = Client;
+module.exports = User;
