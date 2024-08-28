@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/clients', authenticateToken, clientRouter);
-app.use('api/armateurs',authenticateToken,armateurRouter)
+app.use('/api/armateurs',authenticateToken,armateurRouter)
 app.use('/api/ports', authenticateToken, portRouter);
 app.use('/api/navires', authenticateToken, navireRouter);
 app.use('/api/conteneurs', authenticateToken, conteneurRouter);
