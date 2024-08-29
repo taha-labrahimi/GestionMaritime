@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const userService = require('../services/userService');
 
-
 router.post('/register', async (req, res) => {
     try {
         const newUser = await userService.registerUser(req.body);
@@ -11,7 +10,6 @@ router.post('/register', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
-
 
 router.post('/login', async (req, res) => {
     try {
@@ -23,4 +21,14 @@ router.post('/login', async (req, res) => {
     }
 });
 
-module.exports = router
+router.put('/update/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updatedUser = await userService.updateUser(id, req.body);
+        res.json(updatedUser);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
+module.exports = router;
